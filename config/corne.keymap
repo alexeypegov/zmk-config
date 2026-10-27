@@ -52,6 +52,17 @@
             quick-tap-ms = <200>;
             bindings = <&mo>, <&kp>;
         };
+
+        // Tab/Mouse on the top-left key: tap-preferred, so fast rolls off Tab
+        // never trigger the Mouse layer; it activates only after a real hold.
+        lt_mouse: layer_tap_mouse {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            flavor = "tap-preferred";
+            tapping-term-ms = <200>;
+            quick-tap-ms = <200>;
+            bindings = <&mo>, <&kp>;
+        };
     };
 
     // QMK: COMBO_TERM 40
@@ -99,6 +110,15 @@
             bindings = <&kp LG(RET)>;
             layers = <BASE>;
         };
+
+        // Both one-shot Shifts (left pinky + right thumb) toggle Caps Word.
+        // Only Latin letters are capitalized: ж э б ю х live on punctuation keys.
+        combo_caps_word {
+            timeout-ms = <40>;
+            key-positions = <24 41>;
+            bindings = <&caps_word>;
+            layers = <BASE>;
+        };
     };
 
     keymap {
@@ -107,7 +127,7 @@
         base_layer {
             display-name = "Base";
             bindings = <
-   &kp TAB    &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U &kp I     &kp O   &kp P    &kp LBKT
+   &lt_mouse MOUSE TAB &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U &kp I     &kp O   &kp P    &kp LBKT
    &sk LALT   &kp A &kp S &kp D &kp F &kp G      &kp H &kp J &kp K     &kp L   &kp SQT  &mt RALT SEMI
    &sk LSHFT  &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M &kp COMMA &kp DOT &kp FSLH &lt FUNC GRAVE
                  &sk LCTRL &mt LGUI RET &lt_th LOWER TAB   &lt_th RAISE BSPC &kp SPACE &sk LSHFT
@@ -144,7 +164,7 @@
             >;
         };
 
-        // There's no keybinding to activate the mouse layer yet!
+        // Hold the top-left Tab key
         mouse_layer {
             display-name = "Mouse";
             bindings = <

@@ -14,7 +14,7 @@ Firmware is built by GitHub Actions. Download the `firmware` artifact and flash 
   - `F`: toggle USB/BLE output
   - `G`: clear the current profile's pairing
   - Top outer corners (`Tab` / `[`): bootloader (each half)
-- **Mouse**: mouse movement and buttons; no key activates it yet.
+- **Mouse** (hold top-left `Tab`): move with `U` `I` `O` `P`, click with `J` (left) and `K` (right).
 
 ## Combos
 
@@ -25,6 +25,7 @@ Firmware is built by GitHub Actions. Download the `firmware` artifact and flash 
 | `,`+`.` | `Shift+Option+/` → `?` |
 | `M`+`,` | `Option+M` → `ъ` |
 | `K`+`L` | `Cmd+Enter` |
+| Both one-shot Shifts (bottom-left outer + right outer thumb) | Caps Word (English only: ж э б ю х aren't capitalized) |
 
 ## Differences from QMK
 
