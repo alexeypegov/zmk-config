@@ -20,7 +20,6 @@
 #define RAISE  2
 #define FUNC   3
 #define MOUSE  4
-#define ADJUST 5
 
 // QMK: HOLD_ON_OTHER_KEY_PRESS + PERMISSIVE_HOLD, TAPPING_TERM 200.
 // quick-tap-ms mirrors QMK's QUICK_TAP_TERM (defaults to TAPPING_TERM):
@@ -52,15 +51,6 @@
             tapping-term-ms = <125>;
             quick-tap-ms = <200>;
             bindings = <&mo>, <&kp>;
-        };
-    };
-
-    // Hold Lower + Raise for the Adjust (Bluetooth) layer
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-        adjust {
-            if-layers = <LOWER RAISE>;
-            then-layer = <ADJUST>;
         };
     };
 
@@ -140,17 +130,17 @@
    &trans &kp DEL  &kp INS  &kp UNDER  &kp PLUS    &kp PG_UP    &kp C_BRI_DN &kp C_BRI_UP &kp F13    &kp F14      &kp PIPE     &kp BSLH
    &trans &kp HOME &kp END  &kp MINUS  &kp EQUAL   &kp PG_DN    &kp LEFT     &kp DOWN     &kp UP     &kp RIGHT    &kp K_APP    &trans
    &trans &kp LT   &kp GT   &kp K_COPY &kp K_PASTE &kp SEMI     &kp C_PP     &kp C_PREV   &kp C_NEXT &kp C_VOL_DN &kp C_VOL_UP &none
-                            &mt LCTRL ESC &trans   &trans       &none        &trans       &trans
+                            &mt LCTRL ESC &trans   &none        &none        &trans       &trans
             >;
         };
 
         func_layer {
             display-name = "Func";
             bindings = <
-   &trans &kp F1   &kp F2      &kp F3      &kp F4      &kp F5    &kp F6  &kp F7  &kp F8 &kp F9 &kp F10       &trans
-   &trans &kp F11  &kp F12     &none       &none       &none     &kp F15 &kp F16 &none  &none  &none         &trans
-   &trans &kp CAPS &kp LS(DEL) &kp LC(INS) &kp LS(INS) &none     &none   &none   &none  &none  &kp LC(LG(Q)) &none
-                               &none       &none       &none     &none   &none   &none
+   &bootloader &kp F1       &kp F2       &kp F3       &kp F4       &kp F5          &kp F6  &kp F7  &kp F8 &kp F9 &kp F10       &bootloader
+   &trans      &kp F11      &kp F12      &kp CAPS     &out OUT_TOG &bt BT_CLR      &kp F15 &kp F16 &none  &none  &none         &trans
+   &trans      &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    &none   &none   &none  &none  &kp LC(LG(Q)) &none
+                                         &none        &none        &none           &none   &none   &none
             >;
         };
 
@@ -162,16 +152,6 @@
    &trans &none &none &none &none &none     &none &mkp LCLK      &mkp RCLK    &none          &none           &trans
    &trans &none &none &none &none &none     &none &kp K_APP      &none        &none          &none           &trans
                       &trans &trans &trans  &trans &trans &trans
-            >;
-        };
-
-        adjust_layer {
-            display-name = "Adjust";
-            bindings = <
-   &none       &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4    &none  &none &none &none &none &none
-   &none       &bt BT_CLR   &out OUT_TOG &none        &none        &none           &none  &none &none &none &none &none
-   &bootloader &none        &none        &none        &none        &none           &none  &none &none &none &none &bootloader
-                                         &trans       &trans       &trans          &trans &trans &trans
             >;
         };
 

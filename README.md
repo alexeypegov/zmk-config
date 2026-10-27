@@ -9,13 +9,12 @@ Firmware is built by GitHub Actions. Download the `firmware` artifact and flash 
 - **Base**: QWERTY with one-shot Option/Shift/Ctrl, `Cmd`/`Enter`, `Lower`/`Tab`, `Raise`/`Bksp`, `Space`. `AltGr`/`;` and `Func`/`` ` `` on the right outer column.
 - **Lower** (hold Tab thumb): numbers, shifted symbols, brackets, colon.
 - **Raise** (hold Bksp thumb): navigation, editing, brightness, media, Mouseless triggers (`F13`/`F14`).
-- **Func** (hold `` ` ``): F-keys, `F15`/`F16`, Caps Lock, copy/paste shortcuts, lock screen.
+- **Func** (hold `` ` ``): F-keys, `F15`/`F16`, Caps Lock (`D`), lock screen, and Bluetooth:
+  - `Z`–`B`: select Bluetooth profile 1–5
+  - `F`: toggle USB/BLE output
+  - `G`: clear the current profile's pairing
+  - Top outer corners (`Tab` / `[`): bootloader (each half)
 - **Mouse**: mouse movement and buttons; no key activates it yet.
-- **Adjust** (hold Tab thumb + Bksp thumb):
-  - `Q`–`T`: select Bluetooth profile 1–5
-  - `A`: clear the current profile's pairing
-  - `S`: toggle USB/BLE output
-  - Bottom outer corners: bootloader (each half)
 
 ## Combos
 
@@ -33,3 +32,4 @@ Firmware is built by GitHub Actions. Download the `firmware` artifact and flash 
 - One-shot mods time out after 2 s. ZMK has no tap-toggle, so tapping a one-shot mod 3 times does not lock it.
 - `J`+`K` → `Esc` uses `require-prior-idle-ms` instead of QMK's must-hold.
 - The QMK RGB toggle is unbound, because there's no RGB.
+- Func's Windows-style `Shift+Del` / `Ctrl+Ins` / `Shift+Ins` were dropped (macOS ignores them); Caps Lock moved from `Z` to `D` to make room for Bluetooth.
