@@ -53,15 +53,14 @@
             bindings = <&mo>, <&kp>;
         };
 
-        // Tab/Mouse on the top-left key: tap-preferred, so fast rolls off Tab
-        // never trigger the Mouse layer; it activates only after a real hold.
-        lt_mouse: layer_tap_mouse {
+        // Left Alt key: tap for one-shot Option, hold for the Mouse layer.
+        // Tap-preferred, so the Mouse layer activates only after a real hold.
+        mouse_alt: mouse_layer_sticky_alt {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
             flavor = "tap-preferred";
             tapping-term-ms = <200>;
-            quick-tap-ms = <200>;
-            bindings = <&mo>, <&kp>;
+            bindings = <&mo>, <&sk>;
         };
     };
 
@@ -127,8 +126,8 @@
         base_layer {
             display-name = "Base";
             bindings = <
-   &lt_mouse MOUSE TAB &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U &kp I     &kp O   &kp P    &kp LBKT
-   &sk LALT   &kp A &kp S &kp D &kp F &kp G      &kp H &kp J &kp K     &kp L   &kp SQT  &mt RALT SEMI
+   &kp TAB    &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U &kp I     &kp O   &kp P    &kp LBKT
+   &mouse_alt MOUSE LALT &kp A &kp S &kp D &kp F &kp G      &kp H &kp J &kp K     &kp L   &kp SQT  &mt RALT SEMI
    &sk LSHFT  &kp Z &kp X &kp C &kp V &kp B      &kp N &kp M &kp COMMA &kp DOT &kp FSLH &lt FUNC GRAVE
                  &sk LCTRL &mt LGUI RET &lt_th LOWER TAB   &lt_th RAISE BSPC &kp SPACE &sk LSHFT
             >;
@@ -164,7 +163,7 @@
             >;
         };
 
-        // Hold the top-left Tab key
+        // Hold the left Alt key
         mouse_layer {
             display-name = "Mouse";
             bindings = <
