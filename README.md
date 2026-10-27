@@ -14,7 +14,7 @@ Firmware is built by GitHub Actions. Download the `firmware` artifact and flash 
   - `F`: toggle USB/BLE output
   - `G`: clear the current profile's pairing
   - Top outer corners (`Tab` / `[`): bootloader (each half)
-- **Mouse** (hold top-left `Tab`): move with `U` `I` `O` `P`, click with `J` (left) and `K` (right).
+- **Mouse** (hold top-left `Tab`): move with `H` `J` `K` `L` (like the arrows on Raise), click with `U` (left) and `I` (right), scroll with `M` (down) and `,` (up), `App` on `Y`.
 
 ## Combos
 
