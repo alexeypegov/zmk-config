@@ -37,8 +37,11 @@
 };
 
 // QMK: ONESHOT_TIMEOUT 2000
+// quick-release: release on the next key press (not its release), so fast
+// rolls after a one-shot Shift don't capitalize two letters.
 &sk {
     release-after-ms = <2000>;
+    quick-release;
 };
 
 / {
@@ -113,8 +116,9 @@
 
         // Both one-shot Shifts (left pinky + right thumb) toggle Caps Word.
         // Only Latin letters are capitalized: ж э б ю х live on punctuation keys.
+        // 60 ms (not 40): the two Shifts are pressed by different hands.
         combo_caps_word {
-            timeout-ms = <40>;
+            timeout-ms = <60>;
             key-positions = <24 41>;
             bindings = <&caps_word>;
             layers = <BASE>;
