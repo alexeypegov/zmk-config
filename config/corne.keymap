@@ -134,7 +134,7 @@
         compatible = "zmk,keymap";
 
         base_layer {
-            // display-name = "Base"; // hidden so nice!view only shows non-base layers
+            display-name = "Base";
             bindings = <
    &lt_mouse MOUSE TAB &kp Q &kp W &kp E &kp R &kp T      &kp Y &kp U &kp I     &kp O   &kp P    &kp LBKT
    &sk LALT   &kp A &kp S &kp D &kp F &kp G      &kp H &kp J &kp K     &kp L   &kp SQT  &mt RALT SEMI
