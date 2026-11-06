@@ -33,3 +33,8 @@ include:
     snippet: zmk-usb-logging
     cmake-args: -DCONFIG_ZMK_STUDIO=n
     artifact-name: corne_left_debug
+  # Debug build of the right half: USB logging. Flash it only while debugging.
+  - board: nice_nano_v2
+    shield: corne_right nice_view_adapter nice_view_gem
+    snippet: zmk-usb-logging
+    artifact-name: corne_right_debug
