@@ -1,6 +1,6 @@
 manifest:
   defaults:
-    revision: v0.3
+    revision: main
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
@@ -15,6 +15,6 @@ manifest:
     # Keep in step with ZMK: v0.3.0 for ZMK v0.3, main for ZMK main
     - name: nice-view-gem
       remote: m165437
-      revision: v0.3.0
+      revision: main
   self:
     path: config

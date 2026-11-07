@@ -19,22 +19,22 @@
 #
 ---
 include:
-  - board: nice_nano_v2
+  - board: nice_nano//zmk
     shield: corne_left nice_view_adapter nice_view_gem
     snippet: studio-rpc-usb-uart
-  - board: nice_nano_v2
+  - board: nice_nano//zmk
     shield: corne_right nice_view_adapter nice_view_gem
-  - board: nice_nano_v2
+  - board: nice_nano//zmk
     shield: settings_reset
   # Debug build of the left half: USB logging instead of Studio (the CI
   # workflow takes only one snippet). Flash it only while debugging.
-  - board: nice_nano_v2
+  - board: nice_nano//zmk
     shield: corne_left nice_view_adapter nice_view_gem
     snippet: zmk-usb-logging
     cmake-args: -DCONFIG_ZMK_STUDIO=n
     artifact-name: corne_left_debug
   # Debug build of the right half: USB logging. Flash it only while debugging.
-  - board: nice_nano_v2
+  - board: nice_nano//zmk
     shield: corne_right nice_view_adapter nice_view_gem
     snippet: zmk-usb-logging
     artifact-name: corne_right_debug
