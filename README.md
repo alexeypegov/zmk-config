@@ -34,3 +34,19 @@ Firmware is built by GitHub Actions. Download the `firmware` artifact and flash 
 - `J`+`K` → `Esc` uses `require-prior-idle-ms` instead of QMK's must-hold.
 - The QMK RGB toggle is unbound, because there's no RGB.
 - Func's Windows-style `Shift+Del` / `Ctrl+Ins` / `Shift+Ins` were dropped (macOS ignores them); Caps Lock moved from `Z` to `D` to make room for Bluetooth.
+
+## Battery level
+
+Both halves use a custom battery driver (`drivers/battery/lipo_battery_nrf_vddh.c`) instead of the nice!nano's stock one. It reads the same VDDH voltage, but the percentage is steadier and closer to the real charge:
+
+- It takes 4 ADC readings per update and keeps the highest, so a dip during a radio transmission doesn't count.
+- It smooths the voltage with a moving average.
+- It maps voltage to percent with a LiPo discharge table (e.g. 3.73 V = 20%, 3.61 V = 5%) instead of ZMK's straight 3.45–4.2 V line.
+- The level only goes down on battery and only goes up on USB, so it doesn't bounce up after a short charge.
+
+This repo is a Zephyr module (`zephyr/module.yml`), so CI builds the driver automatically. `config/corne.overlay` points `zmk,battery` at it and disables the stock `&vbatt`. Optional tuning in `config/corne.conf`:
+
+- `CONFIG_LIPO_BATTERY_SAMPLES`: readings per update (1–16, default 4)
+- `CONFIG_LIPO_BATTERY_EMA_SHIFT`: smoothing, where each update moves 1/2^N toward the new reading (0–4, default 2)
+
+The debug builds log the raw and filtered voltage and the percentage on every update (once a minute).
