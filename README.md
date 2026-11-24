@@ -56,7 +56,7 @@ The nice!view shows a word instead of a percentage. This comes from a fork of ni
 | Shows | Level | Meaning |
 | --- | --- | --- |
 | `FULL` | ≥ 90% | Charged (a full cell settles at about 95–97% after unplugging) |
-| `OK` | 20–89% | Nothing to do |
+| `GOOD` | 20–89% | Nothing to do |
 | `LOW` | 6–19% | Time to charge. About 20% is the best point for the cell |
 | `CHRG!` | ≤ 5% | Charge now. BLE can get unreliable this low |
 | `CHG` + bolt | USB connected | Charging. No level, because the voltage reads high while charging |
