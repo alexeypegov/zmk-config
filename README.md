@@ -50,3 +50,15 @@ This repo is a Zephyr module (`zephyr/module.yml`), so CI builds the driver auto
 - `CONFIG_LIPO_BATTERY_EMA_SHIFT`: smoothing, where each update moves 1/2^N toward the new reading (0–4, default 2)
 
 The debug builds log the raw and filtered voltage and the percentage on every update (once a minute).
+
+The nice!view shows a word instead of a percentage. This comes from a fork of nice-view-gem ([alexeypegov/nice-view-gem](https://github.com/alexeypegov/nice-view-gem)), enabled with `CONFIG_NICE_VIEW_GEM_BATTERY_LABELS=y`:
+
+| Shows | Level | Meaning |
+| --- | --- | --- |
+| `FULL` | ≥ 90% | Charged (a full cell settles at about 95–97% after unplugging) |
+| `OK` | 20–89% | Nothing to do |
+| `LOW` | 6–19% | Time to charge. About 20% is the best point for the cell |
+| `CHRG!` | ≤ 5% | Charge now. BLE can get unreliable this low |
+| `CHG` + bolt | USB connected | Charging. No level, because the voltage reads high while charging |
+
+Your computer still gets the exact percentage over Bluetooth.

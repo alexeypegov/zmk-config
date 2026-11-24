@@ -4,17 +4,18 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: m165437
-      url-base: https://github.com/M165437
+    - name: alexeypegov
+      url-base: https://github.com/alexeypegov
     # Additional modules containing boards/shields/custom code can be listed here as well
     # See https://docs.zephyrproject.org/3.2.0/develop/west/manifest.html#projects
   projects:
     - name: zmk
       remote: zmkfirmware
       import: app/west.yml
+    # Fork of M165437/nice-view-gem with FULL/OK/LOW battery labels.
     # Keep in step with ZMK: v0.3.0 for ZMK v0.3, main for ZMK main
     - name: nice-view-gem
-      remote: m165437
+      remote: alexeypegov
       revision: main
   self:
     path: config
