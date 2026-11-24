@@ -1,0 +1,15 @@
+/* Use the LiPo-curve battery driver from drivers/battery/ instead of the
+ * nice!nano's stock zmk,battery-nrf-vddh (both read the same VDDH pin). */
+/ {
+    chosen {
+        zmk,battery = &lipo_batt;
+    };
+
+    lipo_batt: lipo_batt {
+        compatible = "lipo,battery-nrf-vddh";
+    };
+};
+
+&vbatt {
+    status = "disabled";
+};

@@ -1,0 +1,5 @@
+description: |
+  Battery level from the nRF52 VDDH pin, using a LiPo discharge curve,
+  smoothing, and charge-aware hysteresis (see drivers/battery/).
+
+compatible: "lipo,battery-nrf-vddh"

@@ -1,0 +1,21 @@
+DT_COMPAT_LIPO_BATTERY_NRF_VDDH := lipo,battery-nrf-vddh
+
+config LIPO_BATTERY_NRF_VDDH
+    bool "LiPo-curve battery driver using nRF VDDH"
+    default $(dt_compat_enabled,$(DT_COMPAT_LIPO_BATTERY_NRF_VDDH))
+    depends on SENSOR
+    select ADC
+
+if LIPO_BATTERY_NRF_VDDH
+
+config LIPO_BATTERY_SAMPLES
+    int "ADC readings per update (the highest one is used)"
+    range 1 16
+    default 4
+
+config LIPO_BATTERY_EMA_SHIFT
+    int "Smoothing: each update moves 1/2^N of the way to the new reading"
+    range 0 4
+    default 2
+
+endif
